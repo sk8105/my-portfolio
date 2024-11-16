@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { MoonIcon, SunIcon, LinkedinIcon, GithubIcon, MailIcon, PhoneIcon, BriefcaseIcon, CodeIcon, BotIcon, ChevronDownIcon } from 'lucide-react'
+import { MoonIcon, SunIcon, LinkedinIcon, GithubIcon, MailIcon, PhoneIcon, BriefcaseIcon, CodeIcon, BotIcon, ChevronDownIcon, GraduationCapIcon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -71,40 +71,37 @@ export default function Portfolio() {
       title: "Solution Enabler",
       company: "JMAN Group, Chennai",
       date: "Apr 2024 – Present",
-      description: "Working on GenAI-based products, including chatbots leveraging vector databases."
+      description: "Working on GenAI-based products, including chatbots leveraging vector databases. Utilizing Next.js, Node.js, and Python for developing scalable AI solutions. Implementing advanced NLP techniques and integrating with cloud platforms for robust AI deployments."
     },
     {
       title: "Senior Software Engineer",
       company: "JMAN Group, Chennai",
       date: "Apr 2023 – Apr 2024",
-      description: "Enhanced data pipelines for increased scalability and performance."
+      description: "Enhanced data pipelines for increased scalability and performance. Worked with dbt, Azure Data Factory, and SQL to optimize ETL processes. Developed data models and implemented data quality checks to ensure data integrity and reliability."
     },
     {
       title: "Software Engineer",
       company: "JMAN Group, Chennai",
       date: "Feb 2022 – Apr 2023",
-      description: "Developed APIs and optimized front-end components."
+      description: "Developed APIs and optimized front-end components. Utilized Node.js and NestJS for backend development, and Angular for creating responsive and interactive user interfaces. Implemented RESTful APIs and worked on performance optimization of database queries."
+    },
+    {
+      title: "Full Stack Developer",
+      company: "Elroi Software Solutions, Chennai",
+      date: "Sep 2021 – Feb 2022",
+      description: "Worked on various programming projects and solutions. Utilized C# and .NET Framework for developing desktop applications. Implemented database solutions using SQL Server and contributed to the development of web applications using ASP.NET MVC."
     },
     {
       title: "Full-Stack Developer",
       company: "Qserve UAE, Chennai",
       date: "Aug 2020 – Nov 2020",
-      description: "Developed a Retail Management System covering core functionalities like order processing, sales tracking, accounting, and inventory management.",
-      skills: "Skills: .NET Core, SQL Server, ASP.NET MVC, LINQ"
-    },
-    {
-      title: "Full-Stack Developer",
-      company: "SEEHASH Software Pvt. Ltd., Chennai",
-      date: "May 2019 – Aug 2019",
-      description: "Designed and developed retail management solutions for client-specific requirements, improving business efficiency and adaptability.",
-      skills: "Skills: .NET Core, SQL Server, C#, Angular"
+      description: "Developed a Retail Management System covering core functionalities like order processing, sales tracking, accounting, and inventory management. Utilized .NET Core, SQL Server, ASP.NET MVC, and LINQ for building a robust and scalable application."
     },
     {
       title: "Software Developer",
       company: "RmKV Computask Pvt. Ltd., Chennai",
       date: "Jul 2017 – Aug 2018",
-      description: "Maintained and enhanced applications to support the RmKV Groups day-to-day operational requirements.",
-      skills: "Skills: SQL Server, C#, Angular, .NET Framework"
+      description: "Maintained and enhanced applications to support the RmKV Groups day-to-day operational requirements. Worked with SQL Server for database management, C# for backend logic, and Angular for front-end development. Implemented new features and optimized existing codebase for improved performance."
     }
   ]
 
@@ -200,16 +197,49 @@ export default function Portfolio() {
                 5 years of experience in Information Technology, with a strong foundation in both full-stack development and data engineering.
                 Skilled in web technologies, including Angular, ReactJS, Next.js, Node.js, NestJS, C#, Python, and SQL.
               </p>
-              <p className="mb-4">
+              <p>
                 Proficient in data engineering tools like dbt, ADF, and SQL, contributing to projects focused on GenAI-based products, chatbots, and machine learning integration.
                 Strong understanding of Object-Oriented Programming (OOPS) concepts and SDLC processes.
-              </p>
-              <p>
-                Quick learner with the ability to work independently and as part of a team.
               </p>
             </CardContent>
           </Card>
         </section>
+
+        {/* Education Summary Section */}
+        <section className="mb-16 relative z-10">
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <GraduationCapIcon className="w-6 h-6" />
+                Education Summary
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  { degree: "MCA", institution: "University of Madras IDE", year: "2017-2020", grade: "70%" },
+                  { degree: "BCA", institution: "Jairam Arts and Science College", year: "2014-2017", grade: "66%" },
+                  { degree: "HSS", institution: "Velasamy Chettiar HSS", year: "2014", grade: "65%" },
+                  { degree: "SSLC", institution: "Velasamy Chettiar HSS", year: "2012", grade: "66%" }
+                ].map((edu, index) => (
+                  <Card key={index} className="hover:shadow-md transition-shadow duration-300">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg">{edu.degree}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground mb-1">{edu.institution}</p>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm font-medium">{edu.year}</span>
+                        <Badge variant="secondary">{edu.grade}</Badge>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
 
         {/* Skills Section */}
         <section className="mb-16 relative z-10">
@@ -219,61 +249,99 @@ export default function Portfolio() {
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="programming" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2 mb-4">
-                  {['programming', 'frontend', 'backend', 'data'].map((tab) => (
-                    <TabsTrigger
-                      key={tab}
-                      value={tab}
-                      className="w-full py-2 px-4 rounded-md transition-all duration-300 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-                    >
-                      {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-                {['programming', 'frontend', 'backend', 'data'].map((tab) => (
-                  <TabsContent key={tab} value={tab} className="mt-4 p-4 bg-secondary rounded-md">
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="space-y-2">
+                    <TabsList className="w-full">
+                      <TabsTrigger
+                        value="programming"
+                        className="w-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                      >
+                        Programming
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsList className="w-full">
+                      <TabsTrigger
+                        value="backend"
+                        className="w-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                      >
+                        Backend
+                      </TabsTrigger>
+                    </TabsList>
+                  </div>
+                  <div className="space-y-2">
+                    <TabsList className="w-full">
+                      <TabsTrigger
+                        value="frontend"
+                        className="w-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                      >
+                        Frontend
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsList className="w-full">
+                      <TabsTrigger
+                        value="data"
+                        className="w-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+                      >
+                        Data
+                      </TabsTrigger>
+                    </TabsList>
+                  </div>
+                </div>
+                <div className="mt-4 p-4 bg-secondary rounded-md">
+                  <TabsContent value="programming">
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
                       className="flex flex-wrap gap-2"
                     >
-                      {tab === 'programming' && (
-                        <>
-                          <TechBadge icon={SiCsharp} name="C#" color="#239120" />
-                          <TechBadge icon={SiPython} name="Python" color="#3776AB" />
-                          <TechBadge icon={SiJavascript} name="JavaScript" color="#F7DF1E" />
-                          <TechBadge icon={SiTypescript} name="TypeScript" color="#3178C6" />
-                        </>
-                      )}
-                      {tab === 'frontend' && (
-                        <>
-                          <TechBadge icon={SiAngular} name="Angular" color="#DD0031" />
-                          <TechBadge icon={SiNextdotjs} name="Next.js" color="#000000" />
-                          <TechBadge icon={SiReact} name="React" color="#61DAFB" />
-                        </>
-                      )}
-                      {tab === 'backend' && (
-                        <>
-                          <TechBadge icon={SiNodedotjs} name="Node.js" color="#339933" />
-                          <TechBadge icon={SiNestjs} name="NestJS" color="#E0234E" />
-                          <TechBadge icon={SiDotnet} name=".NET Core" color="#512BD4" />
-                          <TechBadge icon={SiDotnet} name=".NET Framework" color="#512BD4" />
-                        </>
-                      )}
-                      {tab === 'data' && (
-                        <>
-                          <TechBadge icon={FaDatabase} name="dbt" color="#FF694B" />
-                          <TechBadge icon={SiMicrosoftazure} name="Azure Data Factory" color="#0089D6" />
-                          <TechBadge icon={FaDatabase} name="Matillion ETL" color="#00ADEF" />
-                          <TechBadge icon={SiMicrosoftsqlserver} name="SQL Server" color="#CC2927" />
-                          <TechBadge icon={SiPostgresql} name="PostgreSQL" color="#336791" />
-                          <TechBadge icon={SiAmazonredshift} name="Amazon Redshift" color="#8C4FFF" />
-                        </>
-                      )}
+                      <TechBadge icon={SiCsharp} name="C#" color="#239120" />
+                      <TechBadge icon={SiPython} name="Python" color="#3776AB" />
+                      <TechBadge icon={SiJavascript} name="JavaScript" color="#F7DF1E" />
+                      <TechBadge icon={SiTypescript} name="TypeScript" color="#3178C6" />
                     </motion.div>
                   </TabsContent>
-                ))}
+                  <TabsContent value="frontend">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="flex flex-wrap gap-2"
+                    >
+                      <TechBadge icon={SiAngular} name="Angular" color="#DD0031" />
+                      <TechBadge icon={SiNextdotjs} name="Next.js" color="#000000" />
+                      <TechBadge icon={SiReact} name="React" color="#61DAFB" />
+                    </motion.div>
+                  </TabsContent>
+                  <TabsContent value="backend">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="flex flex-wrap gap-2"
+                    >
+                      <TechBadge icon={SiNodedotjs} name="Node.js" color="#339933" />
+                      <TechBadge icon={SiNestjs} name="NestJS" color="#E0234E" />
+                      <TechBadge icon={SiDotnet} name=".NET Core" color="#512BD4" />
+                      <TechBadge icon={SiDotnet} name=".NET Framework" color="#512BD4" />
+                    </motion.div>
+                  </TabsContent>
+                  <TabsContent value="data">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      className="flex flex-wrap gap-2"
+                    >
+                      <TechBadge icon={FaDatabase} name="dbt" color="#FF694B" />
+                      <TechBadge icon={SiMicrosoftazure} name="Azure Data Factory" color="#0089D6" />
+                      <TechBadge icon={FaDatabase} name="Matillion ETL" color="#00ADEF" />
+                      <TechBadge icon={SiMicrosoftsqlserver} name="SQL Server" color="#CC2927" />
+                      <TechBadge icon={SiPostgresql} name="PostgreSQL" color="#336791" />
+                      <TechBadge icon={SiAmazonredshift} name="Amazon Redshift" color="#8C4FFF" />
+                    </motion.div>
+                  </TabsContent>
+                </div>
               </Tabs>
             </CardContent>
           </Card>
@@ -295,7 +363,6 @@ export default function Portfolio() {
                       <h3 className="font-semibold">{exp.title}</h3>
                       <p className="text-sm text-muted-foreground">{exp.company} ({exp.date})</p>
                       <p className="mt-2">{exp.description}</p>
-                      {exp.skills && <p className="mt-1 text-sm text-muted-foreground">{exp.skills}</p>}
                     </TimelineContent>
                   </TimelineItem>
                 ))}
@@ -324,14 +391,37 @@ export default function Portfolio() {
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="hover:bg-secondary transition-colors rounded-md px-4">
                     <div className="flex items-center gap-2">
-                      <BriefcaseIcon className="w-5 h-5" />
-                      AI Readiness Assessment Tool
+                      <BotIcon className="w-5 h-5" />
+                      AI Chatbot
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-4">
-                    <CardDescription className="mb-2">Baird Capital</CardDescription>
-                    <p>Developed a comprehensive web application using Next.js and PostgreSQL to gauge an organizations readiness for AI. The tool enables companies to assess their AI maturity by analyzing responses to various surveys, generating a tailored action plan to enhance AI adoption.</p>
-                    <p className="mt-2">The application includes features for survey creation, data analysis, and reporting, allowing clients to strategize effectively and build competitive AI capabilities.</p>
+                    <CardDescription className="mb-2">Colonis</CardDescription>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold mb-1">Role</h4>
+                        <p>Project Manager + Technical Lead</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          <TechBadge icon={SiNextdotjs} name="Next.js" color="#000000" />
+                          <TechBadge icon={FaDatabase} name="Chroma DB" color="#00ADEF" />
+                          <TechBadge icon={SiPostgresql} name="Postgres Vector DB" color="#336791" />
+                          <Badge variant="secondary">LangChain</Badge>
+                          <Badge variant="secondary">OpenAI API</Badge>
+                          <Badge variant="secondary">PubMed API</Badge>
+                          <Badge variant="secondary">Google Scholar API</Badge>
+                          <Badge variant="secondary">RAG</Badge>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Description</h4>
+                        <p>Designed and developed an advanced AI-powered chatbot using Next.js integrated with vector embeddings and sophisticated indexing for enhanced natural language processing. The system leverages RAG (Retrieval Augmented Generation) architecture to provide accurate and contextual responses.</p>
+                        <p className="mt-2">Implemented vector database solutions using Chroma DB and Postgres with pgvector extension for efficient similarity search and document retrieval. Integrated multiple academic APIs including PubMed and Google Scholar for comprehensive research data access.</p>
+                        <p className="mt-2">Led the technical architecture decisions and managed the project timeline while ensuring high-quality deliverables and maintaining clear communication with stakeholders.</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
@@ -343,21 +433,58 @@ export default function Portfolio() {
                   </AccordionTrigger>
                   <AccordionContent className="px-4">
                     <CardDescription className="mb-2">With Intelligence</CardDescription>
-                    <p>Built a robust data platform using a data warehouse approach to centralize, organize, and analyze corporate growth data. This platform enables in-depth analyses on metrics such as revenue trends, event tracking, and ARR (Annual Recurring Revenue) bridging.</p>
-                    <p className="mt-2">Leveraged data cubes and optimized data ingestion for efficient retrieval, supporting a streamlined reporting system. Enhanced decision-making for stakeholders with insights into company growth and revenue patterns.</p>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold mb-1">Role</h4>
+                        <p>Project Manager + Data Engineer</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          <TechBadge icon={FaDatabase} name="dbt cloud" color="#FF694B" />
+                          <TechBadge icon={SiAmazonredshift} name="Redshift" color="#8C4FFF" />
+                          <Badge variant="secondary">Atlassian</Badge>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Description</h4>
+                        <p>Built and managed a comprehensive data platform utilizing modern data warehouse architecture to centralize and analyze corporate growth data. Implemented sophisticated data models using dbt cloud for efficient transformation and analysis.</p>
+                        <p className="mt-2">Designed and optimized complex SQL queries and data models in Redshift, significantly improving query performance and data accessibility. Integrated Atlassian tools for project management and documentation.</p>
+                        <p className="mt-2">Led the data engineering team, established best practices for data modeling, and ensured successful delivery of data solutions while maintaining high data quality standards.</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger className="hover:bg-secondary transition-colors rounded-md px-4">
                     <div className="flex items-center gap-2">
-                      <BotIcon className="w-5 h-5" />
-                      AI Chatbot
+                      <BriefcaseIcon className="w-5 h-5" />
+                      AI Readiness Assessment Tool
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-4">
-                    <CardDescription className="mb-2">Colonis</CardDescription>
-                    <p>Designed and developed an AI-powered chatbot using Next.js integrated with vector embeddings and advanced indexing for enhanced natural language processing. The chatbot facilitates customer interactions, automating responses with contextual accuracy and relevance.</p>
-                    <p className="mt-2">Integrated support for FAQs, customer feedback collection, and dynamic content delivery, improving customer engagement and response efficiency. The chatbot is capable of handling large datasets, allowing for comprehensive knowledge retrieval and improved client satisfaction.</p>
+                    <CardDescription className="mb-2">Baird Capital</CardDescription>
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold mb-1">Role</h4>
+                        <p>Project Manager + Technical Lead</p>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-2">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          <TechBadge icon={SiNextdotjs} name="Next.js" color="#000000" />
+                          <TechBadge icon={SiPostgresql} name="PostgreSQL" color="#336791" />
+                          <Badge variant="secondary">Docker</Badge>
+                          <Badge variant="secondary">App Services</Badge>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Description</h4>
+                        <p>Led the development of a comprehensive web application using Next.js and PostgreSQL to assess organizational AI readiness. Implemented containerized deployment using Docker and Azure App Services for scalable and reliable hosting.</p>
+                        <p className="mt-2">Designed and implemented a sophisticated survey system with dynamic question generation and intelligent scoring algorithms. Created detailed reports and actionable insights based on assessment results.</p>
+                        <p className="mt-2">Managed the project timeline, coordinated with stakeholders, and provided technical leadership to ensure successful delivery while maintaining high code quality standards.</p>
+                      </div>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
